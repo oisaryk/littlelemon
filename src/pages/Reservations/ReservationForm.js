@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import "../../styles/ReservationsContent.css";
-import {useForm, useFormState} from "react-hook-form";
+import {useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -36,7 +36,7 @@ function ReservationForm ({ selectedTable }) {
     const [currentSelectedTable, setSelectedTable] = useState(selectedTable);
     useEffect(() => {
         setSelectedTable(selectedTable);
-        setValue('table', selectedTable);
+        setValue('table', currentSelectedTable);
     }, [selectedTable]);
 
     const formSubmit = (data) => {
