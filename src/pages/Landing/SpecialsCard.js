@@ -8,7 +8,7 @@ const SpecialsCard = (props) => {
     const { image, title, price, description, order, index } = props;
 
     return (
-        <div key={index} className="special-card-container">
+        <article key={index} className="special-card-container">
             <div className="image-container">
                 <img src={image} alt="Special dessert"/>
             </div>
@@ -25,7 +25,7 @@ const SpecialsCard = (props) => {
                     </h4>
                 </NavLink>
             </div>
-        </div>
+        </article>
     )
 }
 

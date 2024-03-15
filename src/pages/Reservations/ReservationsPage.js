@@ -5,7 +5,7 @@ import TableSelectionForm from "./TableSelectionForm";
 
 function ReservationsPage() {
 
-    const [selectedTable, setSelectedTable] = useState(null);
+    const [selectedTable, setSelectedTable] = useState(2);
 
     const handleTableSelection = (table) => {
         if (table) {

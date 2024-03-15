@@ -9,7 +9,7 @@ const schema = yup.object({
     email: yup.string().required("Email is a required field!").email("Email is not valid!"),
     telephone: yup.string().required("Telephone is a required field!").matches(/(?=.*\+[0-9]{3}\s?[0-9]{2}\s?[0-9]{3}\s?[0-9]{4,5}$)/, "Phone number must match the form +380XXXXXXXXX"),
     date: yup.string().required("Please select date and time!"),
-    table: yup.number().required("Please select preferred table!")
+    table: yup.number().required("Please select preferred table!").default(2)
 })
 
 const tableMapper = {
@@ -34,27 +34,30 @@ function ReservationForm ({ selectedTable }) {
     })
 
     const [currentSelectedTable, setSelectedTable] = useState(selectedTable);
+
+
     useEffect(() => {
         setSelectedTable(selectedTable);
         setValue('table', currentSelectedTable);
     }, [selectedTable]);
 
     const formSubmit = (data) => {
-        alert('All done')
+        console.log(data);
     }
 
     return (
         <form onSubmit={handleSubmit(formSubmit)}>
+
             <fieldset>
-                <FormField label="Full Name" type="text" placeholder="Oleksandr Doe" name="name" register={register}
+                <FormField label="Full Name" type="text" placeholder="Oleksandr Doe" id="name" name="name" register={register}
                            errors={errors}/>
-                <FormField label="Email" type="text" placeholder="some@email.com" name="email" register={register}
+                <FormField label="Email" type="text" placeholder="some@email.com" id="email" name="email" register={register}
                            errors={errors}/>
-                <FormField label="Telephone" type="tel" placeholder="380XXXXXXXXX" name="telephone"
+                <FormField label="Telephone" type="tel" placeholder="+380XXXXXXXXX" name="telephone" id="telephone"
                            register={register} errors={errors}/>
                 <div className="field">
                     <label htmlFor="date">Date & Time</label>
-                    <input type="datetime-local" name="date" {...register("date")} />
+                    <input type="datetime-local" name="date" {...register("date")} id="date" placeholder="dd.mm.yyyy"/>
                     <span className="error-message">{errors.date?.message}</span>
                 </div>
                 <div className='field'>

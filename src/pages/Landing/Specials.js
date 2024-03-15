@@ -6,7 +6,7 @@ import fakeApi from "../../utils/api";
 const fetchCurrentSpecials = async () => {
     try {
         const response = await fakeApi.get();
-        return response.data;
+        return response?.data;
     } catch (e) {
         console.error(e);
     }
@@ -27,7 +27,7 @@ const Specials = () => {
 
     if (specials) {
         return (
-            <div className="specials-section-container">
+            <section className="specials-section-container">
                 <div className="specials-section-title">
                     <h1>This Week's Specials</h1>
                 </div>
@@ -46,7 +46,7 @@ const Specials = () => {
                         )
                     })}
                 </div>
-            </div>
+            </section>
         )
     } else {
         return (
